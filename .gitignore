@@ -1,0 +1,63 @@
+# Node modules (for both frontend & backend)
+frontend-app/node_modules/
+backend-app/node_modules/
+
+# Compiled output
+frontend-app/dist/
+frontend-app/dist-ssr/
+backend-app/dist/
+backend-app/build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS-specific files
+.DS_Store
+
+# IDE-specific files
+.vscode/
+!.vscode/extensions.json
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Tests & Coverage
+frontend-app/.nyc_output/
+frontend-app/coverage/
+backend-app/.nyc_output/
+backend-app/coverage/
+
+# dotenv environment variable files
+frontend-app/.env
+frontend-app/.env.local
+frontend-app/.env.development.local
+frontend-app/.env.test.local
+frontend-app/.env.production.local
+backend-app/.env
+backend-app/.env.local
+backend-app/.env.development.local
+backend-app/.env.test.local
+backend-app/.env.production.local
+
+# Temp directories
+.temp/
+.tmp/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
