@@ -31,7 +31,7 @@ export class UserService {
   }
 
   async generateToken(user: any) {
-    console.log('JWT Secret:', this.jwtService['options']?.secret); // Check if secret is set
+    // console.log('JWT Secret:', this.jwtService['options']?.secret); // Check if secret is set
 
     const payload = { id: user.id, email: user.email , username: user.username };
     return {

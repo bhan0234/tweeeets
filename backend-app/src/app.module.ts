@@ -10,25 +10,30 @@ import { User } from './user/entities/user.entity';
 import { Like } from './like/entities/like.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './auth/jwtconstants';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'tweets',
-      password: 'postgres',
-      database: 'twitter',
-      entities: [Tweet, User, Like],
-      synchronize: true,
-      // logging: true,
+    ConfigModule.forRoot({ isGlobal: true }), // Load .env globally
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres',
+        host: configService.get<string>('DB_HOST'),
+        port: configService.get<number>('DB_PORT'),
+        username: configService.get<string>('DB_USER'),
+        password: configService.get<string>('DB_PASS'),
+        database: configService.get<string>('DB_NAME'),
+        entities: [Tweet, User, Like],
+        synchronize: false,
+      }),
     }),
     TweetsModule,
     UserModule,
-    LikeModule],
+    LikeModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
-
 })
 export class AppModule {}
